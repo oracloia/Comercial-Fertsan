@@ -9,7 +9,7 @@ const INK: [number, number, number] = [18, 48, 46];
 
 async function loadLogo(): Promise<string | null> {
   try {
-    const res = await fetch("/fertsan-logo.png");
+    const res = await fetch(`${import.meta.env.BASE_URL}fertsan-logo.png`);
     const blob = await res.blob();
     return await new Promise((ok) => {
       const r = new FileReader();

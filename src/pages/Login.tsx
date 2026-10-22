@@ -22,12 +22,12 @@ export default function Login() {
         const { error } = await supabase.auth.signUp({
           email,
           password,
-          options: { data: { name }, emailRedirectTo: window.location.origin },
+          options: { data: { name }, emailRedirectTo: window.location.origin + import.meta.env.BASE_URL },
         });
         if (error) throw error;
         setMsg({ ok: true, text: "Conta criada. Confirme pelo link enviado ao seu e-mail e depois entre." });
       } else {
-        const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin });
+        const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin + import.meta.env.BASE_URL });
         if (error) throw error;
         setMsg({ ok: true, text: "Enviamos um link para redefinir a senha." });
       }
@@ -43,7 +43,7 @@ export default function Login() {
     <div className="grid min-h-screen lg:grid-cols-2">
       <div className="relative hidden flex-col justify-between overflow-hidden bg-brand-900 p-12 text-white lg:flex">
         <div className="w-fit rounded-xl bg-white px-4 py-3">
-          <img src="/fertsan-logo.png" alt="Fertsan" className="h-12" />
+          <img src={`${import.meta.env.BASE_URL}fertsan-logo.png`} alt="Fertsan" className="h-12" />
         </div>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-400">Gestão comercial · Safra 2026/2027</p>
@@ -61,7 +61,7 @@ export default function Login() {
 
       <div className="flex items-center justify-center p-6">
         <div className="w-full max-w-sm">
-          <img src="/fertsan-logo.png" alt="Fertsan" className="mx-auto mb-8 h-12 lg:hidden" />
+          <img src={`${import.meta.env.BASE_URL}fertsan-logo.png`} alt="Fertsan" className="mx-auto mb-8 h-12 lg:hidden" />
           <div className="rounded-xl border border-brand-100 bg-white p-6 shadow-sm">
             {mode !== "reset" && (
               <div className="mb-5 grid grid-cols-2 rounded-lg bg-slate-100 p-1 text-sm">

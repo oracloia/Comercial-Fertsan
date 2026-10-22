@@ -63,7 +63,7 @@ export function Layout() {
   const sidebar = (
     <div className="flex h-full flex-col">
       <div className="px-5 pb-4 pt-6">
-        <img src="/fertsan-logo.png" alt="Fertsan — Ciência semeando produtividade" className="h-12 w-auto" />
+        <img src={`${import.meta.env.BASE_URL}fertsan-logo.png`} alt="Fertsan — Ciência semeando produtividade" className="h-12 w-auto" />
         <div className="mt-5 rounded-xl bg-brand-50 px-3 py-2.5">
           <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-600">Gestão comercial</p>
           <p className="text-sm font-semibold">Operação comercial</p>
